@@ -43,4 +43,4 @@ prep
 server-dist
 client-dist
 schema.graphql
-examples
+old_exercises
