@@ -15,14 +15,6 @@
       "color": "red",
       "price": 123,
       "id": 2
-    },
-    {
-      "make": "a",
-      "model": "a",
-      "year": 1900,
-      "color": "a",
-      "price": 0,
-      "id": 3
     }
   ],
   "owners": [
@@ -75,85 +67,6 @@
       "size": "tiny",
       "quantity": 16,
       "ownerId": 3
-    },
-    {
-      "id": 5,
-      "name": "Tiny Yellow Widget",
-      "description": "A tiny, yellow widget.",
-      "color": "yellow",
-      "size": "tiny",
-      "quantity": 29,
-      "ownerId": 3
-    },
-    {
-      "id": 6,
-      "name": "Tiny Yellow Widget",
-      "description": "A tiny, yellow widget.",
-      "color": "yellow",
-      "size": "tiny",
-      "quantity": 12,
-      "ownerId": 3
-    },
-    {
-      "id": 7,
-      "name": "Tiny Yellow Widget",
-      "description": "A tiny, yellow widget.",
-      "color": "yellow",
-      "size": "tiny",
-      "quantity": 45,
-      "ownerId": 3
-    },
-    {
-      "id": 8,
-      "name": "Tiny Yellow Widget",
-      "description": "A tiny, yellow widget.",
-      "color": "yellow",
-      "size": "tiny",
-      "quantity": 23,
-      "ownerId": 3
-    },
-    {
-      "id": 9,
-      "name": "Tiny Yellow Widget",
-      "description": "A tiny, yellow widget.",
-      "color": "yellow",
-      "size": "tiny",
-      "quantity": 74,
-      "ownerId": 3
-    },
-    {
-      "id": 10,
-      "name": "Tiny Yellow Widget",
-      "description": "A tiny, yellow widget.",
-      "color": "yellow",
-      "size": "tiny",
-      "quantity": 3,
-      "ownerId": 3
-    },
-    {
-      "id": 11,
-      "name": "Tiny Yellow Widget",
-      "description": "A tiny, yellow widget.",
-      "color": "yellow",
-      "size": "tiny",
-      "quantity": 25,
-      "ownerId": 3
-    },
-    {
-      "name": "a",
-      "description": "a",
-      "color": "a",
-      "size": "a",
-      "quantity": 0,
-      "id": 12
-    },
-    {
-      "name": "b",
-      "description": "b",
-      "color": "b",
-      "size": "b",
-      "quantity": 0,
-      "id": 13
     }
   ],
   "people": [

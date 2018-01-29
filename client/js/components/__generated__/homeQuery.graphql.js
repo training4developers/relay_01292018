@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8612a68aa3e1a47febb858b2f3a80d80
+ * @relayHash a518db3a4ce07010411697f829de971d
  */
 
 /* eslint-disable */
@@ -12,7 +12,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 export type homeQueryResponse = {|
   +viewer: ?{|
     +id: string;
-    +message: ?string;
   |};
 |};
 */
@@ -22,7 +21,6 @@ export type homeQueryResponse = {|
 query homeQuery {
   viewer {
     id
-    message
   }
 }
 */
@@ -47,13 +45,6 @@ const batch /*: ConcreteBatch*/ = {
             "alias": null,
             "args": null,
             "name": "id",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "message",
             "storageKey": null
           }
         ],
@@ -86,20 +77,13 @@ const batch /*: ConcreteBatch*/ = {
             "args": null,
             "name": "id",
             "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "message",
-            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query homeQuery {\n  viewer {\n    id\n    message\n  }\n}\n"
+  "text": "query homeQuery {\n  viewer {\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

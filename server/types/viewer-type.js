@@ -13,7 +13,7 @@ export const viewerType = new GraphQLObjectType({
     id: globalIdField('Viewer'),
     message: {
       type: GraphQLString,
-      resolve: () => 'Hello World!',
+      resolve: () => 'Welcome to Relay!',
     },
   }),
 
