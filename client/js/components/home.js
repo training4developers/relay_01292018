@@ -3,6 +3,11 @@ import { QueryRenderer, graphql } from 'react-relay';
 
 import { environment } from '../environment';
 
+import { WidgetTableContainer } from './widget-table';
+
+
+
+
 export class Home extends React.Component {
 
   render() {
@@ -15,49 +20,19 @@ export class Home extends React.Component {
             viewer {
               id
               message
-              widgets {
-                edges {
-                  node {
-                    id
-                    name
-                    description
-                    color
-                    size
-                    quantity
-                  }
-                }
-              }
+              ...widgetTable_viewer
             }
           }
         `}
         variables={{}}
         render={ ({ props }) => {
 
+
           if (props) {
+            console.dir(props.viewer);
             return <div>
               <h1>{props.viewer.message}</h1>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Color</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {props.viewer.widgets.edges.map( ({ node: widget }) =>
-                    <tr key={widget.id}>
-                      <td>{widget.name}</td>
-                      <td>{widget.description}</td>
-                      <td>{widget.color}</td>
-                      <td>{widget.size}</td>
-                      <td>{widget.quantity}</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
+              <WidgetTableContainer viewer={props.viewer} />
             </div>;
           } else {
             return <div>Loading...</div>;
