@@ -14,13 +14,19 @@ export class Home extends React.Component {
           query homeQuery {
             viewer {
               id
+              message
             }
           }
         `}
         variables={{}}
-        render={ () => {
+        render={ ({ props }) => {
 
-          return <h1>Hello World!</h1>;
+          if (props) {
+            return <h1>{props.viewer.message}</h1>;
+          } else {
+            return <div>Loading...</div>;
+          }
+
 
         } } />
     </section>;
