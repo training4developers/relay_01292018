@@ -21,6 +21,13 @@ export class WidgetTable extends React.Component {
         {this.props.viewer.widgets.edges.map(({ node: widget }) =>
           <WidgetViewRowContainer key={widget.id} widget={widget} />)}
       </tbody>
+      <tfoot>
+        <tr>
+          <td colSpan="5">
+            Count: {this.props.viewer.widgets.totalCount}
+          </td>
+        </tr>
+      </tfoot>
     </table>;
 
   }
@@ -38,6 +45,7 @@ export const WidgetTableContainer = createFragmentContainer(
             ...widgetViewRow_widget
           }
         }
+        totalCount
       }
     }
   `

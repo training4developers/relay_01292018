@@ -67,6 +67,62 @@
       "size": "tiny",
       "quantity": 16,
       "ownerId": 3
+    },
+    {
+      "name": "a",
+      "description": "d",
+      "color": "r",
+      "size": "l",
+      "quantity": 2,
+      "id": 5
+    },
+    {
+      "name": "a",
+      "description": "d",
+      "color": "r",
+      "size": "l",
+      "quantity": 2,
+      "id": 6
+    },
+    {
+      "name": "s",
+      "description": "s",
+      "color": "s",
+      "size": "s",
+      "quantity": 0,
+      "id": 7
+    },
+    {
+      "name": "w",
+      "description": "w",
+      "color": "w",
+      "size": "w",
+      "quantity": 0,
+      "id": 8
+    },
+    {
+      "name": "q",
+      "description": "q",
+      "color": "q",
+      "size": "q",
+      "quantity": 0,
+      "id": 9
+    },
+    {
+      "name": "t",
+      "description": "t",
+      "color": "t",
+      "size": "t",
+      "quantity": 0,
+      "id": 10
+    },
+    {
+      "name": "h",
+      "description": "h",
+      "color": "h",
+      "size": "h",
+      "quantity": 0,
+      "id": 11
     }
   ],
   "people": [

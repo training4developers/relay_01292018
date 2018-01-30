@@ -6,7 +6,6 @@ import { environment } from '../environment';
 import { WidgetTableContainer } from './widget-table';
 import { CarTableContainer } from './car-table';
 
-
 export class Home extends React.Component {
 
   render() {
@@ -25,11 +24,16 @@ export class Home extends React.Component {
           }
         `}
         variables={{}}
-        render={ ({ props }) => {
+        render={ ({ error, props, retry}) => {
 
-
-          if (props) {
-            console.dir(props.viewer);
+          if (error) {
+            return <div>
+              <div>{error.message}</div>
+              <div>
+                <button onClick={() => retry()}>Retry</button>
+              </div>
+            </div>;
+          } else if (props) {
             return <div>
               <h1>{props.viewer.message}</h1>
               <WidgetTableContainer viewer={props.viewer} />
@@ -38,7 +42,6 @@ export class Home extends React.Component {
           } else {
             return <div>Loading...</div>;
           }
-
 
         } } />
     </section>;

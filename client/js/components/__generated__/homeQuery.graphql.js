@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 004ebc6a3ee47e331cbc18545fda111a
+ * @relayHash 84bb8a957f1b0114884d7ca9c7cec8c0
  */
 
 /* eslint-disable */
@@ -36,6 +36,7 @@ fragment widgetTable_viewer on Viewer {
         ...widgetViewRow_widget
       }
     }
+    totalCount
   }
 }
 
@@ -215,6 +216,13 @@ const batch /*: ConcreteBatch*/ = {
                   }
                 ],
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "totalCount",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -299,7 +307,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query homeQuery {\n  viewer {\n    id\n    message\n    ...widgetTable_viewer\n    ...carTable_viewer\n  }\n}\n\nfragment widgetTable_viewer on Viewer {\n  widgets {\n    edges {\n      node {\n        id\n        ...widgetViewRow_widget\n      }\n    }\n  }\n}\n\nfragment carTable_viewer on Viewer {\n  cars {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n      }\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  make\n  model\n  year\n  color\n  price\n}\n\nfragment widgetViewRow_widget on Widget {\n  name\n  description\n  color\n  size\n  quantity\n}\n"
+  "text": "query homeQuery {\n  viewer {\n    id\n    message\n    ...widgetTable_viewer\n    ...carTable_viewer\n  }\n}\n\nfragment widgetTable_viewer on Viewer {\n  widgets {\n    edges {\n      node {\n        id\n        ...widgetViewRow_widget\n      }\n    }\n    totalCount\n  }\n}\n\nfragment carTable_viewer on Viewer {\n  cars {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n      }\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  make\n  model\n  year\n  color\n  price\n}\n\nfragment widgetViewRow_widget on Widget {\n  name\n  description\n  color\n  size\n  quantity\n}\n"
 };
 
 module.exports = batch;
