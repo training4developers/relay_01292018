@@ -8,8 +8,8 @@
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type widgetTable_viewer = {|
-  +widgets: ?{|
+export type carTable_viewer = {|
+  +cars: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string;
@@ -24,21 +24,21 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "widgetTable_viewer",
+  "name": "carTable_viewer",
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
       "args": null,
-      "concreteType": "WidgetsConnection",
-      "name": "widgets",
+      "concreteType": "CarsConnection",
+      "name": "cars",
       "plural": false,
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
           "args": null,
-          "concreteType": "WidgetsEdge",
+          "concreteType": "CarsEdge",
           "name": "edges",
           "plural": true,
           "selections": [
@@ -46,7 +46,7 @@ const fragment /*: ConcreteFragment*/ = {
               "kind": "LinkedField",
               "alias": null,
               "args": null,
-              "concreteType": "Widget",
+              "concreteType": "Car",
               "name": "node",
               "plural": false,
               "selections": [
@@ -59,7 +59,7 @@ const fragment /*: ConcreteFragment*/ = {
                 },
                 {
                   "kind": "FragmentSpread",
-                  "name": "widgetViewRow_widget",
+                  "name": "carViewRow_car",
                   "args": null
                 }
               ],

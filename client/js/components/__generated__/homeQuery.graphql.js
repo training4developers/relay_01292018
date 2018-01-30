@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ebe98684f50919a8c2643a4b79b0354f
+ * @relayHash 004ebc6a3ee47e331cbc18545fda111a
  */
 
 /* eslint-disable */
@@ -24,6 +24,7 @@ query homeQuery {
     id
     message
     ...widgetTable_viewer
+    ...carTable_viewer
   }
 }
 
@@ -32,14 +33,37 @@ fragment widgetTable_viewer on Viewer {
     edges {
       node {
         id
-        name
-        description
-        color
-        size
-        quantity
+        ...widgetViewRow_widget
       }
     }
   }
+}
+
+fragment carTable_viewer on Viewer {
+  cars {
+    edges {
+      node {
+        id
+        ...carViewRow_car
+      }
+    }
+  }
+}
+
+fragment carViewRow_car on Car {
+  make
+  model
+  year
+  color
+  price
+}
+
+fragment widgetViewRow_widget on Widget {
+  name
+  description
+  color
+  size
+  quantity
 }
 */
 
@@ -75,6 +99,11 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "FragmentSpread",
             "name": "widgetTable_viewer",
+            "args": null
+          },
+          {
+            "kind": "FragmentSpread",
+            "name": "carTable_viewer",
             "args": null
           }
         ],
@@ -189,13 +218,88 @@ const batch /*: ConcreteBatch*/ = {
               }
             ],
             "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "CarsConnection",
+            "name": "cars",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "CarsEdge",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Car",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "id",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "make",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "model",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "year",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "color",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "price",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query homeQuery {\n  viewer {\n    id\n    message\n    ...widgetTable_viewer\n  }\n}\n\nfragment widgetTable_viewer on Viewer {\n  widgets {\n    edges {\n      node {\n        id\n        name\n        description\n        color\n        size\n        quantity\n      }\n    }\n  }\n}\n"
+  "text": "query homeQuery {\n  viewer {\n    id\n    message\n    ...widgetTable_viewer\n    ...carTable_viewer\n  }\n}\n\nfragment widgetTable_viewer on Viewer {\n  widgets {\n    edges {\n      node {\n        id\n        ...widgetViewRow_widget\n      }\n    }\n  }\n}\n\nfragment carTable_viewer on Viewer {\n  cars {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n      }\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  make\n  model\n  year\n  color\n  price\n}\n\nfragment widgetViewRow_widget on Widget {\n  name\n  description\n  color\n  size\n  quantity\n}\n"
 };
 
 module.exports = batch;
