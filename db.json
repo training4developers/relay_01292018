@@ -123,6 +123,25 @@
       "size": "h",
       "quantity": 0,
       "id": 11
+    },
+    {
+      "widget": {
+        "name": "y",
+        "description": "w",
+        "color": "p",
+        "size": "i",
+        "quantity": 2
+      },
+      "clientMutationId": "1",
+      "id": 12
+    },
+    {
+      "name": "y",
+      "description": "w",
+      "color": "p",
+      "size": "i",
+      "quantity": 2,
+      "id": 13
     }
   ],
   "people": [
