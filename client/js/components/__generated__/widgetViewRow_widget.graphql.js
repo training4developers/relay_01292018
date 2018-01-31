@@ -9,6 +9,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type widgetViewRow_widget = {|
+  +id: string;
   +name: ?string;
   +description: ?string;
   +color: ?string;
@@ -24,6 +25,13 @@ const fragment /*: ConcreteFragment*/ = {
   "metadata": null,
   "name": "widgetViewRow_widget",
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "id",
+      "storageKey": null
+    },
     {
       "kind": "ScalarField",
       "alias": null,

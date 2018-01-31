@@ -42,7 +42,7 @@ const sharedUpdater = (source, viewerId, widgetEdge, totalCount) => {
 
 };
 
-export const insertWidget = (environment, widget, viewer) => {
+export const insertWidget = (environment, viewerId, widget) => {
 
   return new Promise((resolve, reject) => {
 
@@ -63,11 +63,11 @@ export const insertWidget = (environment, widget, viewer) => {
 
         const widgetEdge = payload.getLinkedRecord('widgetEdge');
         const totalCount = payload
-          .getLinkedRecord('viewer')
+          .getLinkedRecord('viewerId')
           .getLinkedRecord('widgets')
           .getValue('totalCount');
 
-        sharedUpdater(source, viewer.id, widgetEdge, totalCount);
+        sharedUpdater(source, viewerId, widgetEdge, totalCount);
       },
       optimisticUpdater: source => {
 
@@ -86,7 +86,7 @@ export const insertWidget = (environment, widget, viewer) => {
         const widgetEdge = source.create(edgeId, 'widgetEdge');
         widgetEdge.setLinkedRecord(node, 'node');
 
-        sharedUpdater(source, viewer.id, widgetEdge);
+        sharedUpdater(source, viewerId, widgetEdge);
       },
       onCompleted: (results, errors) => {
 

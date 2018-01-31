@@ -19,7 +19,7 @@ class AppPage extends React.Component {
   render() {
     return <div>
       <header>
-        <h1>Welcome to Modern Relay!</h1>
+        <h1>Widget Manager</h1>
       </header>
       <nav>
         <ul>
@@ -27,7 +27,7 @@ class AppPage extends React.Component {
         </ul>
       </nav>
       {this.props.children}
-      <footer>
+      <footer style={{ textAlign:'center' }}>
         <small>&copy; 2017, A Cool Company, Inc.</small>
       </footer>
     </div>;

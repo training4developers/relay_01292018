@@ -3,10 +3,10 @@ import { QueryRenderer, graphql } from 'react-relay';
 
 import { environment } from '../environment';
 
-import { WidgetTableContainer } from './widget-table';
-import { CarTableContainer } from './car-table';
+import { PaginatedWidgetTableContainer } from './paginated-widget-table';
 import { WidgetForm } from './widget-form';
 import { insertWidget as relayInsertWidget } from '../mutations/insert-widget';
+import { deleteWidget as relayDeleteWidget } from '../mutations/delete-widget';
 
 export class Home extends React.Component {
 
@@ -19,9 +19,7 @@ export class Home extends React.Component {
           query homeQuery {
             viewer {
               id
-              message
-              ...widgetTable_viewer
-              ...carTable_viewer
+              ...paginatedWidgetTable_viewer
             }
           }
         `}
@@ -40,16 +38,23 @@ export class Home extends React.Component {
             const reactInsertWidget = widget => {
               return relayInsertWidget(
                 environment,
+                props.viewer.id,
                 widget,
-                props.viewer,
+              );
+            };
+
+            const reactDeleteWidget = widgetId => {
+              console.log(widgetId);
+              return relayDeleteWidget(
+                environment,
+                props.viewer.id,
+                widgetId,
               );
             };
 
             return <div>
-              <h1>{props.viewer.message}</h1>
-              <WidgetTableContainer viewer={props.viewer} />
+              <PaginatedWidgetTableContainer viewer={props.viewer} onDeleteWidget={reactDeleteWidget} />
               <WidgetForm onSubmitWidget={reactInsertWidget} />
-              <CarTableContainer viewer={props.viewer} />
             </div>;
           } else {
             return <div>Loading...</div>;
