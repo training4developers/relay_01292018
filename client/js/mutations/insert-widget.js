@@ -63,7 +63,7 @@ export const insertWidget = (environment, viewerId, widget) => {
 
         const widgetEdge = payload.getLinkedRecord('widgetEdge');
         const totalCount = payload
-          .getLinkedRecord('viewerId')
+          .getLinkedRecord('viewer')
           .getLinkedRecord('widgets')
           .getValue('totalCount');
 

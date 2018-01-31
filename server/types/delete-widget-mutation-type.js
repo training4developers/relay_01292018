@@ -16,9 +16,7 @@ export const deleteWidgetMutationType = mutationWithClientMutationId({
   },
 
   mutateAndGetPayload: ({ widgetId }, { baseUrl }) => {
-    console.log('global widget id: ' +  widgetId);
     const localWidgetId = fromGlobalId(widgetId).id;
-    console.log('delete local widget id: ' + localWidgetId);
     const widgetData = new WidgetData(baseUrl);
     return widgetData.delete(localWidgetId)
       .then(widget => Object.assign(new Widget(), widget));

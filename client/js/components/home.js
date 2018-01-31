@@ -8,6 +8,9 @@ import { WidgetForm } from './widget-form';
 import { insertWidget as relayInsertWidget } from '../mutations/insert-widget';
 import { deleteWidget as relayDeleteWidget } from '../mutations/delete-widget';
 
+
+
+
 export class Home extends React.Component {
 
   render() {
@@ -23,7 +26,9 @@ export class Home extends React.Component {
             }
           }
         `}
-        variables={{}}
+        variables={{
+          // first: 2
+        }}
         render={ ({ error, props, retry}) => {
 
           if (error) {

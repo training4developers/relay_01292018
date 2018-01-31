@@ -4,7 +4,7 @@ import { createFragmentContainer, graphql } from 'react-relay';
 
 import { WidgetViewRowContainer } from './widget-view-row';
 
-export class WidgetTable extends React.Component {
+export class FilteredWidgetTable extends React.Component {
 
   static propTypes = {
     relay: PropTypes.object.isRequired,
@@ -14,6 +14,8 @@ export class WidgetTable extends React.Component {
 
   render() {
 
+    console.log(this.props.relay);
+
     return <table className="table table-striped">
       <thead>
         <tr>
@@ -22,6 +24,7 @@ export class WidgetTable extends React.Component {
           <th>Color</th>
           <th>Size</th>
           <th>Quantity</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -30,7 +33,7 @@ export class WidgetTable extends React.Component {
       </tbody>
       <tfoot>
         <tr>
-          <td colSpan="5">
+          <td colSpan="6">
             Count: {this.props.viewer.widgets.totalCount}
           </td>
         </tr>
@@ -41,11 +44,13 @@ export class WidgetTable extends React.Component {
 
 }
 
-export const WidgetTableContainer = createFragmentContainer(
-  WidgetTable,
+export const FilteredWidgetTableContainer = createFragmentContainer(
+  FilteredWidgetTable,
   graphql`
-    fragment widgetTable_viewer on Viewer {
-      widgets(first: 100) @connection(key: "WidgetTable_widgets") {
+    fragment filteredWidgetTable_viewer on Viewer @argumentDefinitions(
+        first: { type: "Int", defaultValue: 1 }
+      ) {
+      widgets(first: $first) @connection(key: "WidgetTable_widgets") {
         edges {
           node {
             id
