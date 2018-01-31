@@ -38,7 +38,7 @@ export const WidgetTableContainer = createFragmentContainer(
   WidgetTable,
   graphql`
     fragment widgetTable_viewer on Viewer {
-      widgets {
+      widgets(first: 100) @connection(key: "WidgetTable_widgets") {
         edges {
           node {
             id

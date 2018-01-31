@@ -24,15 +24,26 @@ export type widgetTable_viewer = {|
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": null,
+        "cursor": null,
+        "direction": "forward",
+        "path": [
+          "widgets"
+        ]
+      }
+    ]
+  },
   "name": "widgetTable_viewer",
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": null,
+      "alias": "widgets",
       "args": null,
       "concreteType": "WidgetsConnection",
-      "name": "widgets",
+      "name": "__WidgetTable_widgets_connection",
       "plural": false,
       "selections": [
         {
@@ -62,8 +73,22 @@ const fragment /*: ConcreteFragment*/ = {
                   "kind": "FragmentSpread",
                   "name": "widgetViewRow_widget",
                   "args": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "__typename",
+                  "storageKey": null
                 }
               ],
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "cursor",
               "storageKey": null
             }
           ],
@@ -74,6 +99,31 @@ const fragment /*: ConcreteFragment*/ = {
           "alias": null,
           "args": null,
           "name": "totalCount",
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "args": null,
+          "concreteType": "PageInfo",
+          "name": "pageInfo",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "endCursor",
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "args": null,
+              "name": "hasNextPage",
+              "storageKey": null
+            }
+          ],
           "storageKey": null
         }
       ],

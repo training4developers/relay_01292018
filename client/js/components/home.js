@@ -5,6 +5,8 @@ import { environment } from '../environment';
 
 import { WidgetTableContainer } from './widget-table';
 import { CarTableContainer } from './car-table';
+import { WidgetForm } from './widget-form';
+import { insertWidget as relayInsertWidget } from '../mutations/insert-widget';
 
 export class Home extends React.Component {
 
@@ -34,9 +36,19 @@ export class Home extends React.Component {
               </div>
             </div>;
           } else if (props) {
+
+            const reactInsertWidget = widget => {
+              return relayInsertWidget(
+                environment,
+                widget,
+                props.viewer,
+              );
+            };
+
             return <div>
               <h1>{props.viewer.message}</h1>
               <WidgetTableContainer viewer={props.viewer} />
+              <WidgetForm onSubmitWidget={reactInsertWidget} />
               <CarTableContainer viewer={props.viewer} />
             </div>;
           } else {

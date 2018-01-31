@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 84bb8a957f1b0114884d7ca9c7cec8c0
+ * @relayHash 355801dd7fc0114e6723a1ac2d0e687b
  */
 
 /* eslint-disable */
@@ -29,14 +29,20 @@ query homeQuery {
 }
 
 fragment widgetTable_viewer on Viewer {
-  widgets {
+  widgets(first: 100) {
     edges {
       node {
+        __typename
         id
         ...widgetViewRow_widget
       }
+      cursor
     }
     totalCount
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
   }
 }
 
@@ -148,7 +154,14 @@ const batch /*: ConcreteBatch*/ = {
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": null,
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "first",
+                "value": 100,
+                "type": "Int"
+              }
+            ],
             "concreteType": "WidgetsConnection",
             "name": "widgets",
             "plural": false,
@@ -169,6 +182,13 @@ const batch /*: ConcreteBatch*/ = {
                     "name": "node",
                     "plural": false,
                     "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "__typename",
+                        "storageKey": null
+                      },
                       {
                         "kind": "ScalarField",
                         "alias": null,
@@ -213,6 +233,13 @@ const batch /*: ConcreteBatch*/ = {
                       }
                     ],
                     "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "cursor",
+                    "storageKey": null
                   }
                 ],
                 "storageKey": null
@@ -223,9 +250,50 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "totalCount",
                 "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "endCursor",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasNextPage",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
               }
             ],
-            "storageKey": null
+            "storageKey": "widgets{\"first\":100}"
+          },
+          {
+            "kind": "LinkedHandle",
+            "alias": null,
+            "args": [
+              {
+                "kind": "Literal",
+                "name": "first",
+                "value": 100,
+                "type": "Int"
+              }
+            ],
+            "handle": "connection",
+            "name": "widgets",
+            "key": "WidgetTable_widgets",
+            "filters": null
           },
           {
             "kind": "LinkedField",
@@ -307,7 +375,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query homeQuery {\n  viewer {\n    id\n    message\n    ...widgetTable_viewer\n    ...carTable_viewer\n  }\n}\n\nfragment widgetTable_viewer on Viewer {\n  widgets {\n    edges {\n      node {\n        id\n        ...widgetViewRow_widget\n      }\n    }\n    totalCount\n  }\n}\n\nfragment carTable_viewer on Viewer {\n  cars {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n      }\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  make\n  model\n  year\n  color\n  price\n}\n\nfragment widgetViewRow_widget on Widget {\n  name\n  description\n  color\n  size\n  quantity\n}\n"
+  "text": "query homeQuery {\n  viewer {\n    id\n    message\n    ...widgetTable_viewer\n    ...carTable_viewer\n  }\n}\n\nfragment widgetTable_viewer on Viewer {\n  widgets(first: 100) {\n    edges {\n      node {\n        __typename\n        id\n        ...widgetViewRow_widget\n      }\n      cursor\n    }\n    totalCount\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment carTable_viewer on Viewer {\n  cars {\n    edges {\n      node {\n        id\n        ...carViewRow_car\n      }\n    }\n  }\n}\n\nfragment carViewRow_car on Car {\n  make\n  model\n  year\n  color\n  price\n}\n\nfragment widgetViewRow_widget on Widget {\n  name\n  description\n  color\n  size\n  quantity\n}\n"
 };
 
 module.exports = batch;
